@@ -1,0 +1,43 @@
+*{padding:0px; margin: 0px;}
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:before,
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
+.main-container{
+    width:50%;
+    margin: 0 auto;
+}
+ul{
+    list-style: none;
+}
+li{
+    display: inline;
+    float:left;
+    padding:10px;
+}
+.header{
+    background-color: aqua;
+}
+
+.popup {
+    position: absolute; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 300px;
+    top: 200px;
+    width: 50%; /* Full width */
+    height: 50%; /* Full height */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    color: red;
+}
+
+.mainwrapper {
+    position: relative;
+}
