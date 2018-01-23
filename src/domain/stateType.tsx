@@ -1,0 +1,15 @@
+export interface stateType {
+  isFetching: boolean, 
+  isEditing: boolean,
+  didInvalidate: boolean,
+  isDeleting: boolean,
+   todoList: object[],
+   tags: object[],
+   task: string,
+  details: string,
+  inputTags: object[],
+  isRegistered: boolean,
+  metadata: {},
+  editTaskId:number,
+  searchText:string,
+}

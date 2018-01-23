@@ -5,17 +5,29 @@ import {
   Link,
   Switch,
 } from 'react-router-dom';
+import '../css/index.css';
 import Home from '../Pages/Home';
 import About from '../Pages/About';
+import reduxThunk from 'redux-thunk';
 import Topics from '../Pages/Topics';
+import { Provider } from 'react-redux';
+import rootReducer from '../reducers/todo';
 import AuthButton from '../Components/AuthButton';
-import '../css/index.css';
+import MainWrapper from '../Components/MainWrapper';
+import { Store, createStore, compose, applyMiddleware } from 'redux';
+import { stateType } from '../domain/stateType';
 
+
+export const store: Store<stateType> = createStore(
+  rootReducer,
+  compose(applyMiddleware(reduxThunk)),
+  // (window as any).__REDUX_DEVTOOLS_EXTENSION__  && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 const TodoRoute: React.SFC<{}> = () => (
   <div className="main-container">
   <h1> TODO APP </h1>
-  {/* <Provider store = { store }> */}
+  <Provider store={store}>
   <Router>
     <div>
       <div className="header navbar navbar-expand-lg navbar-light bg-light clearfix">
@@ -31,18 +43,15 @@ const TodoRoute: React.SFC<{}> = () => (
       <hr/>
 
       <Switch>
-      <Route path="/" component={Home}/>
+      <Route exact={true} path="/" component={Home}/>
       <Route path="/about" component={About}/>
       <Route path="/topics" component={Topics}/>
-      {/* <Route path = "/Todo" component = {MainWrapper}/> */}
-      {/* <Route path = "/Logout" component = {Logout} /> */}
-      {/* <Route path = "/Login" component = {Login}/> */}
-      {/* <Route path = "/Register" component = {Register}/> */}
-      {/* <PrivateRoute path="/AddTodo" component={MainWrapper}/> */}
+      <Route path="/Todo" component={MainWrapper}/>
+      
       </Switch>
     </div>
   </Router>
-  {/* </Provider> */}
+  </Provider>
   </div>
 )
 
